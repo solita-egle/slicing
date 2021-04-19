@@ -34,8 +34,8 @@ def get_discount(order_value: float):
 def get_user_input():
     while True:
         try:
-            nr_of_items = int(input('Please enter the nr of items: '))
-           #user_input_nr_of_items_validation(nr_of_items)
+            nr_of_items = input('Please enter the nr of items: ')
+            user_input_nr_of_items_validation(nr_of_items)
         except ValueError:
             continue
         else:
@@ -59,13 +59,11 @@ def get_user_input():
 
 
 def user_input_nr_of_items_validation(nr_of_items):
-    #try:
-        #nr_of_items = int(nr_of_items.strip())
-    #except ValueError as e:
-      #  raise ValueError
-    #if not isinstance(int(nr_of_items), int):
-       # print("Value of number of items should be integer. Please enter the value again")
-       # raise ValueError
+    try:
+        nr_of_items = int(nr_of_items.strip())
+    except ValueError as e:
+        print("Value of number of items should be integer. Please enter the value again")
+        raise ValueError
     if int(nr_of_items) <= 0:
         print("Value of number of items should be greater than 0. Please enter the value again")
         raise ValueError

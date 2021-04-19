@@ -34,7 +34,7 @@ def get_discount(order_value: float):
 def get_user_input():
     while True:
         try:
-            nr_of_items = int(input('Please enter the nr of items: '))
+            nr_of_items = input('Please enter the nr of items: ')
         except ValueError:
             print('Wrong input. Please enter the number again')
             continue
@@ -42,7 +42,7 @@ def get_user_input():
             break
     while True:
         try:
-            price = int(input('Please enter the price of an item: '))
+            price = input('Please enter the price of an item: ')
         except ValueError:
             print('Wrong input. Please enter the number again')
             continue
@@ -50,13 +50,21 @@ def get_user_input():
             break
     while True:
         try:
-            state_code = str(input('Please enter the state code: '))
+            state_code = input('Please enter the state code: ')
         except ValueError:
             print('Wrong input. Please enter the state code again')
             continue
         else:
             break
 
+def user_input_validation(nr_of_items,price,state_code):
+    if not isinstance(nr_of_items, int):
+        print("Value of number of items should be integer. Please enter the value again")
+        return False
+    if nr_of_items <= 0:
+        print("Value of number of items should be greater than 0. Please enter the value again")
+        return False
+    
 
 if __name__ == '__main__':
-    get_order_value(978, 51.15, 'UT')
+    user_input_validation('test', 51.15, 'UT')

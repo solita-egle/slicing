@@ -56,12 +56,13 @@ def get_user_input():
             continue
         else:
             break
+    get_order_value(int(nr_of_items), float(price), str(state_code))
 
 
 def user_input_nr_of_items_validation(nr_of_items):
     try:
         nr_of_items = int(nr_of_items.strip())
-    except ValueError as e:
+    except ValueError:
         print("Value of number of items should be integer. Please enter the value again")
         raise ValueError
     if int(nr_of_items) <= 0:
@@ -70,7 +71,9 @@ def user_input_nr_of_items_validation(nr_of_items):
 
 
 def user_input_price_validation(price):
-    if not isinstance(float(price), float):
+    try:
+        price = float(price.strip())
+    except ValueError:
         print("Value price should be integer. Please enter the value again")
         raise ValueError
     if float(price) <= 0:
@@ -79,7 +82,9 @@ def user_input_price_validation(price):
 
 
 def user_input_state_code_validation(state_code):
-    if not isinstance(str(state_code), str):
+    try:
+        state_code = str(state_code.strip().upper())
+    except ValueError:
         print("Value of state code should be string. Please enter the value again")
         raise ValueError
     if str(state_code) not in TAX_RATES.keys():
